@@ -5,7 +5,7 @@ import arcade
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 
-class Robobo(arcade.Window):
+class Robantu(arcade.Window):
     """ Main game window class. """
 
     def __init__(self, width, height):
@@ -13,5 +13,5 @@ class Robobo(arcade.Window):
 
 
 def run():
-    window = Robobo(SCREEN_WIDTH, SCREEN_HEIGHT)
+    window = Robantu(SCREEN_WIDTH, SCREEN_HEIGHT)
     arcade.run()

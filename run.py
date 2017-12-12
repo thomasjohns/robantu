@@ -1,5 +1,5 @@
-import robobo
+import robantu
 
 
 if __name__ == '__main__':
-    robobo.run()
+    robantu.run()

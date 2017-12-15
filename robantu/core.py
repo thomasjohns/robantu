@@ -23,7 +23,7 @@ class RobantuWindow(arcade.Window):
 
     def update(self, dt):
         for entity in self.state['entities']:
-            entity.update(self.state['room'].is_allowable_region)
+            entity.update(self.state['room'].is_allowable_region_in_room)
         # self.state['room'].update()
 
     def on_draw(self):

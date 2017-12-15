@@ -7,7 +7,7 @@ class Entity(object):
         self.x = x
         self.y = y
 
-    def update(self, is_allowable_region):
+    def update(self, is_allowable_region_in_room):
         pass
 
     def draw(self):

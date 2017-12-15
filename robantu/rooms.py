@@ -22,7 +22,10 @@ class HomeRoom(Room):
         self.exit_zones = []  # some kind of area (collision points) which maps to a new room
 
     def is_allowable_region(self, x, y, width, height):
+        # TODO: this could probably be added to the parent class room
+        ### boundary method
         return (
             (0 + width // 2) < x < (SCREEN_WIDTH - width // 2) and
             (0 + height // 2) < y < (SCREEN_HEIGHT - height // 2)
         )
+        ###

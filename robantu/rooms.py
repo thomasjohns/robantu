@@ -2,6 +2,8 @@
 
 import arcade
 
+from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
+
 
 class Room():
 
@@ -18,3 +20,9 @@ class HomeRoom(Room):
         self.start_x = 500
         self.start_y = 500
         self.exit_zones = []  # some kind of area (collision points) which maps to a new room
+
+    def is_allowable_region(self, x, y, width, height):
+        return (
+            (0 + width // 2) < x < (SCREEN_WIDTH - width // 2) and
+            (0 + height // 2) < y < (SCREEN_HEIGHT - height // 2)
+        )

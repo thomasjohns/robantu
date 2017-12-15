@@ -1,5 +1,7 @@
 """ TODO """
 
+import arcade
+
 
 class Room(object):
 
@@ -9,5 +11,9 @@ class Room(object):
     def draw(self):
         pass
 
+
 class HomeRoom(Room):
-    pass
+
+    def __init__(self):
+        self.start_x = 500
+        self.start_y = 500

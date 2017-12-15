@@ -2,19 +2,14 @@
 
 import arcade
 
+from .entities import Entity
 
-class Robot(object):
+
+class Robot(Entity):
 
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
+        super().__init__(x, y)
         self.is_alive = True
-
-    def update(self):
-        pass
-
-    def draw(self):
-        pass
 
 
 class Robantu(Robot):
@@ -27,6 +22,7 @@ class Robantu(Robot):
         self.height = 50
         self.color = arcade.color.AERO_BLUE
         self.angle = 0
+        self.movement_speed = 10
 
     def update(self):
         self.x += self.dx
@@ -41,3 +37,19 @@ class Robantu(Robot):
             self.color,
             self.angle,
         )
+
+    def handle_key_press(self, symbol, modifiers):
+        if symbol == arcade.key.UP:
+            self.dy = self.movement_speed
+        elif symbol == arcade.key.DOWN:
+            self.dy = -self.movement_speed
+        elif symbol == arcade.key.LEFT:
+            self.dx = -self.movement_speed
+        elif symbol == arcade.key.RIGHT:
+            self.dx = self.movement_speed
+
+    def handle_key_release(self, symbol, modifiers):
+        if symbol == arcade.key.UP or symbol == arcade.key.DOWN:
+            self.dy = 0
+        elif symbol == arcade.key.LEFT or symbol == arcade.key.RIGHT:
+            self.dx = 0

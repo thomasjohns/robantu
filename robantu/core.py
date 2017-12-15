@@ -14,11 +14,10 @@ class RobantuWindow(arcade.Window):
     def __init__(self, width, height):
         super().__init__(width, height)
         home_room = HomeRoom()
-        robantu = Robantu(home_room.start_x, home_room.start_y)
         self.state = {
             'room': home_room,
             'health': 10,
-            'entities': [robantu],
+            'entities': [Robantu(home_room.start_x, home_room.start_y)],
         }
 
     def update(self, dt):
@@ -33,11 +32,13 @@ class RobantuWindow(arcade.Window):
             if entity.is_alive:
                 entity.draw()
 
-    def on_key_press(self):
-        pass
+    def on_key_press(self, symbol, modifiers):
+        for entity in self.state['entities']:
+            entity.handle_key_press(symbol, modifiers)
 
-    def on_key_release(self):
-        pass
+    def on_key_release(self, symbol, modifiers):
+        for entity in self.state['entities']:
+            entity.handle_key_release(symbol, modifiers)
 
     # def save_game(self):
     #     """ Save game state to file. """

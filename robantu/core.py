@@ -13,16 +13,17 @@ class RobantuWindow(arcade.Window):
 
     def __init__(self, width, height):
         super().__init__(width, height)
+        arcade.set_background_color(arcade.color.DARK_SLATE_GRAY)
+
         home_room = HomeRoom()
         self.state = {
             'room': home_room,
-            'health': 10,
             'entities': [Robantu(home_room.start_x, home_room.start_y)],
         }
 
     def update(self, dt):
         for entity in self.state['entities']:
-            entity.update()
+            entity.update(self.state['room'].is_allowable_region)
         # self.state['room'].update()
 
     def on_draw(self):

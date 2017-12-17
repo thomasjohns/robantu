@@ -3,9 +3,10 @@
 import arcade
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, MENU_WIDTH
+from .opponents import Rock
 
 
-class Room():
+class Room(object):
 
     def update(self):
         pass
@@ -24,6 +25,7 @@ class HomeRoom(Room):
     def __init__(self):
         self.start_x = 500
         self.start_y = 500
+        self.starting_entities = [Rock(750, 750)]
         self.exit_zones = []  # some kind of area (collision points) which maps to a new room
 
     def is_allowable_region_in_room(self, x, y, width, height):

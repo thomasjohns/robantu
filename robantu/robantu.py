@@ -8,18 +8,21 @@ from .constants import MENU_WIDTH
 from .entities import Entity
 
 
-class Robot(Entity):
+# TODO: There will likely be other robots in tha game, so we will probably
+#       have a robot base class, but not sure how that is goint to look. It
+#       would propbably go into another file and both robantu and opponents
+#       would import it
+# class Robot(Entity):
 
-    def __init__(self, x, y):
-        super().__init__(x, y)
-        self.is_alive = True
+#     def __init__(self, x, y):
+#         super().__init__(x, y)
 
 
 class EnergyBall(Entity):
     pass
 
 
-class Robantu(Robot):
+class Robantu(Entity):
 
     def __init__(self, x, y):
         super().__init__(x, y)

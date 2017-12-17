@@ -4,7 +4,7 @@ import arcade
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, MENU_WIDTH
 from .rooms import HomeRoom
-from .robots import Robantu
+from .robantu import Robantu
 
 
 class State(object):

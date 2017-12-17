@@ -2,7 +2,7 @@
 
 import arcade
 
-from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, MENU_WIDTH
 from .rooms import HomeRoom
 from .robots import Robantu
 
@@ -43,6 +43,14 @@ class RobantuWindow(arcade.Window):
 
     def on_draw(self):
         arcade.start_render()
+
+        arcade.draw_rectangle_filled(
+            center_x=100,
+            center_y=SCREEN_HEIGHT // 2,
+            width=MENU_WIDTH,
+            height=SCREEN_HEIGHT,
+            color=arcade.color.BLACK_OLIVE,
+        )
         # self.state.room.draw()
         for entity in self.state.entities:
             if entity.is_alive:

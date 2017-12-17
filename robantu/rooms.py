@@ -2,7 +2,7 @@
 
 import arcade
 
-from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, MENU_WIDTH
 
 
 class Room():
@@ -13,6 +13,11 @@ class Room():
     def draw(self):
         pass
 
+    def is_within_screen(self, x, y, width, height):
+        return (
+            (MENU_WIDTH + width // 2) < x < (SCREEN_WIDTH - width // 2) and
+            (0 + height // 2) < y < (SCREEN_HEIGHT - height // 2)
+        )
 
 class HomeRoom(Room):
 
@@ -22,10 +27,4 @@ class HomeRoom(Room):
         self.exit_zones = []  # some kind of area (collision points) which maps to a new room
 
     def is_allowable_region_in_room(self, x, y, width, height):
-        # TODO: this could probably be added to the parent class room
-        ### boundary method
-        return (
-            (0 + width // 2) < x < (SCREEN_WIDTH - width // 2) and
-            (0 + height // 2) < y < (SCREEN_HEIGHT - height // 2)
-        )
-        ###
+        return self.is_within_screen(x, y, width, height)

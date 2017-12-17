@@ -4,6 +4,7 @@ import math
 import itertools
 import arcade
 
+from .constants import MENU_WIDTH
 from .entities import Entity
 
 
@@ -83,23 +84,38 @@ class Robantu(Robot):
         if self.angle == 0:  # facing right
             coords['start_x'] = self.beam_handle_x + self.beam_handle_width / 2
             coords['start_y'] = self.beam_handle_y
-            coords['end_x'] = self.beam_handle_x + self.beam_handle_width / 2 + self.beam_length
+            coords['end_x'] = (
+                self.beam_handle_x +
+                self.beam_handle_width / 2 +
+                self.beam_length
+            )
             coords['end_y'] = self.beam_handle_y
         elif self.angle == math.pi / 2:  # facing up
             coords['start_x'] = self.beam_handle_x
             coords['start_y'] = self.beam_handle_y + self.beam_handle_height / 2
             coords['end_x'] = self.beam_handle_x
-            coords['end_y'] = self.beam_handle_y + self.beam_handle_height / 2 + self.beam_length
+            coords['end_y'] = (
+                self.beam_handle_y +
+                self.beam_handle_height / 2 +
+                self.beam_length
+            )
         elif self.angle == math.pi:  # facing left
             coords['start_x'] = self.beam_handle_x - self.beam_handle_width / 2
             coords['start_y'] = self.beam_handle_y
-            coords['end_x'] = self.beam_handle_x - self.beam_handle_width / 2 - self.beam_length
+            coords['end_x'] = max([
+                self.beam_handle_x - self.beam_handle_width / 2 - self.beam_length,
+                MENU_WIDTH
+            ])
             coords['end_y'] = self.beam_handle_y
         else:  # facing down
             coords['start_x'] = self.beam_handle_x
             coords['start_y'] = self.beam_handle_y - self.beam_handle_height / 2
             coords['end_x'] = self.beam_handle_x
-            coords['end_y'] = self.beam_handle_y - self.beam_handle_height / 2 - self.beam_length
+            coords['end_y'] = (
+                self.beam_handle_y -
+                self.beam_handle_height / 2 -
+                self.beam_length
+            )
         return coords
 
     def beam_hits(self, x, y, entity_radius):

@@ -33,7 +33,9 @@ class RobantuWindow(arcade.Window):
         home_room = HomeRoom()
         self.state = State(
             room=home_room,
-            entities=[Robantu(home_room.start_x, home_room.start_y)],
+            entities=[
+                Robantu(home_room.start_x, home_room.start_y),
+            ] + home_room.starting_entities,
         )
 
     def update(self, dt):
